@@ -43,6 +43,10 @@ do
 end
 -- }}}
 
+-- Startup programs
+
+
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
@@ -232,7 +236,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     -- opens rofi
-    awful.key({ modkey,           }, "r", function () awful.spawn("rofi -show run") end,
+    awful.key({ modkey,           }, "d", function () awful.spawn("rofi -show drun") end,
               {description = "open rofi", group = "launcher"}),    
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
