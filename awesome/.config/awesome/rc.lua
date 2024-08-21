@@ -235,9 +235,11 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    -- opens rofi
+    -- opens rofi in drun mode (mod+r)
     awful.key({ modkey,           }, "d", function () awful.spawn("rofi -show drun") end,
-              {description = "open rofi", group = "launcher"}),    
+              {description = "open rofi in drun mode", group = "launcher"}),
+    awful.key({ modkey,           }, "r", function () awful.spawn("rofi -show run") end,
+              {description = "open rofi in run mode", group = "launcher"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
@@ -319,7 +321,7 @@ globalkeys = gears.table.join(
 
     -- Prompt
     -- awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-    --           {description = "run prompt", group = "launcher"}),
+             --{description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
