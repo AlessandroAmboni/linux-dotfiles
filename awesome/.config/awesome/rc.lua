@@ -339,12 +339,14 @@ globalkeys = gears.table.join(
 )
 
 clientkeys = gears.table.join(
-    awful.key({ modkey,           }, "f",
-        function (c)
-            c.fullscreen = not c.fullscreen
-            c:raise()
-        end,
-        {description = "toggle fullscreen", group = "client"}),
+    -- toggle fullscreen
+    -- awful.key({ modkey,           }, "f",
+    --     function (c)
+    --         c.fullscreen = not c.fullscreen
+    --         c:raise()
+    --     end,
+    --     {description = "toggle fullscreen", group = "client"}),
+
     -- kill window
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
@@ -365,19 +367,19 @@ clientkeys = gears.table.join(
             c.minimized = true
         end ,
         {description = "minimize", group = "client"}),
-    awful.key({ modkey,           }, "m",
+    awful.key({ modkey,           }, "f",
         function (c)
             c.maximized = not c.maximized
             c:raise()
         end ,
         {description = "(un)maximize", group = "client"}),
-    awful.key({ modkey, "Control" }, "m",
+    awful.key({ modkey, "Control" }, "f",
         function (c)
             c.maximized_vertical = not c.maximized_vertical
             c:raise()
         end ,
         {description = "(un)maximize vertically", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "m",
+    awful.key({ modkey, "Shift"   }, "f",
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
@@ -501,13 +503,13 @@ awful.rules.rules = {
       }, properties = { floating = true }},
 
     -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" }
+    { rule_any = {type = {"dialog" } -- original: rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = true }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    { rule = { class = "firefox" },
+      properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 
@@ -578,4 +580,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- statup programs
 
-awful.util.spawn('picom')
+-- awful.util.spawn('picom')
